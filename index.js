@@ -1,9 +1,14 @@
+let params = {
+  country: "PSE",
+  city: "Haifa",
+  method: "4",
+};
 axios
-  .get(
-    "http://api.aladhan.com/v1/calendarByCity/2023/11?city=Telaviv&country=isreal&method=4"
-  )
+  .get("http://api.aladhan.com/v1/timingsByCity", {
+    params: params,
+  })
   .then((response) => {
-    let datan = response.data.data[0].timings;
+    let datan = response.data.data.timings;
     console.log(datan);
     let j = datan.Fajr;
     document.getElementById("fajr").innerHTML += `${j}`;
